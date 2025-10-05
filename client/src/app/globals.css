@@ -1,0 +1,220 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+:root {
+  --radius: 12px;
+  
+  /* F1 Theme Colors */
+  --primary: #FF1801; /* Ferrari Red */
+  --background-light: #F5F5F5;
+  --card-light: #FFFFFF;
+  --text-light: #1A1A1A;
+  --secondary-light: #E0E0E0;
+  --accent: #333333;
+  
+  /* Default theme compatibility */
+  --background: #F5F5F5;
+  --foreground: #1A1A1A;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E0E0E0;
+  --secondary-foreground: #1A1A1A;
+  --muted: #E0E0E0;
+  --muted-foreground: #666666;
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF4444;
+  --border: #E0E0E0;
+  --input: #E0E0E0;
+  --ring: #FF1801;
+  --chart-1: #FF1801;
+  --chart-2: #333333;
+  --chart-3: #666666;
+  --chart-4: #999999;
+  --chart-5: #CCCCCC;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #1A1A1A;
+  --sidebar-primary: #FF1801;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E0E0E0;
+  --sidebar-accent-foreground: #1A1A1A;
+  --sidebar-border: #E0E0E0;
+  --sidebar-ring: #FF1801;
+}
+
+.dark {
+  --background: #1A1A1A;
+  --foreground: #FFFFFF;
+  --card: #333333;
+  --card-foreground: #FFFFFF;
+  --popover: #333333;
+  --popover-foreground: #FFFFFF;
+  --primary: #FF1801;
+  --primary-foreground: #FFFFFF;
+  --secondary: #444444;
+  --secondary-foreground: #FFFFFF;
+  --muted: #444444;
+  --muted-foreground: #AAAAAA;
+  --accent: #444444;
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF4444;
+  --border: #444444;
+  --input: #444444;
+  --ring: #FF1801;
+  --chart-1: #FF1801;
+  --chart-2: #666666;
+  --chart-3: #888888;
+  --chart-4: #AAAAAA;
+  --chart-5: #CCCCCC;
+  --sidebar: #333333;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #FF1801;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #444444;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #444444;
+  --sidebar-ring: #FF1801;
+}
+
+/* F1 Specific Styles */
+.chequered-flag-bg {
+  background-image:
+    linear-gradient(45deg, #1A1A1A 25%, transparent 25%),
+    linear-gradient(-45deg, #1A1A1A 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #1A1A1A 75%),
+    linear-gradient(-45deg, transparent 75%, #1A1A1A 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+  background-color: #ffffff;
+}
+
+.tire-track-bg {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" fill="none"/><circle cx="20" cy="20" r="15" fill="none" stroke="%23333" stroke-width="2"/></svg>');
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: contain;
+}
+
+.parallax-bg {
+  background-image: linear-gradient(135deg, rgba(255, 24, 1, 0.1) 0%, rgba(51, 51, 51, 0.1) 100%);
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  z-index: 0;
+  opacity: 0.1;
+}
+
+/* Animations */
+@keyframes carMoveLeft {
+  0% { transform: translateX(0) rotate(-12deg); }
+  50% { transform: translateX(-10px) rotate(-12deg); }
+  100% { transform: translateX(0) rotate(-12deg); }
+}
+
+@keyframes helmetMoveRight {
+  0% { transform: translateX(0) rotate(12deg); }
+  50% { transform: translateX(10px) rotate(12deg); }
+  100% { transform: translateX(0) rotate(12deg); }
+}
+
+.animate-car-left {
+  animation: carMoveLeft 4s ease-in-out infinite;
+}
+
+.animate-helmet-right {
+  animation: helmetMoveRight 4s ease-in-out infinite;
+}
+
+@keyframes tireTrackScroll {
+  0% { background-position-y: 0; }
+  100% { background-position-y: 100%; }
+}
+
+.animate-tire-track {
+  animation: tireTrackScroll 60s linear infinite;
+}
+
+/* Base Styles */
+* {
+  border-color: rgb(224 224 224);
+  outline-color: rgb(255 24 1 / 0.5);
+}
+
+body {
+  background-color: rgb(245 245 245);
+  color: rgb(26 26 26);
+  font-family: 'Roboto', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Font Classes */
+.font-display {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(224 224 224);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(102 102 102 / 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(102 102 102 / 0.4);
+}
+
+/* Utility Classes */
+.text-primary {
+  color: #FF1801;
+}
+
+.bg-primary {
+  background-color: #FF1801;
+}
+
+.text-accent {
+  color: #333333;
+}
+
+.bg-accent {
+  background-color: #333333;
+}
+
+.bg-background-light {
+  background-color: #F5F5F5;
+}
+
+.bg-card-light {
+  background-color: #FFFFFF;
+}
+
+.text-text-light {
+  color: #1A1A1A;
+}
+
+.bg-secondary-light {
+  background-color: #E0E0E0;
+}
+
+.border-primary {
+  border-color: #FF1801;
+}
+
+
