@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Formula Hacks 2025</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.12.2/dist/MotionPathPlugin.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+    <div id="smooth-wrapper">
+        <main id="smooth-content">
+
+            <header class="site-nav">
+                <div class="nav-left">
+                    <img src="assets/images/FH2025 Black Logo.png" alt="FH2025" class="logo" />
+                    <nav class="nav-links">
+                        <a href="#home" class="nav-link">Home</a>
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#tracks" class="nav-link">Tracks</a>
+                        <a href="#timeline" class="nav-link">Timeline</a>
+                        <a href="#mentors" class="nav-link">Mentors</a>
+                        <a href="#sponsors" class="nav-link">Sponsors</a>
+                    </nav>
+                </div>
+
+                <div class="nav-right">
+                    <img src="assets/images/Chitkara White Logo.png" alt="Chitkara" class="chitkara" />
+                    <a class="register-btn" href="#register">Register</a>
+                </div>
+            </header>
+
+            <div class="divider"></div>
+
+            <div id="trackContainer">
+                <svg id="mainTrackSvg" viewBox="0 0 1200 80" preserveAspectRatio="xMinYMin meet" class="track-svg">
+                    <defs>
+                        <filter id="blurFilter">
+                            <feGaussianBlur stdDeviation="6" />
+                        </filter>
+                    </defs>
+
+                    <path id="mainPathBase" d="M0 40 C200 20, 400 60, 600 40 C800 20, 1000 60, 1200 40" stroke="#0a0a0a"
+                        stroke-width="6" fill="none" stroke-linecap="round" />
+
+                    <path id="mainPathGlow" d="M0 40 C200 20, 400 60, 600 40 C800 20, 1000 60, 1200 40" stroke="#d90429"
+                        stroke-width="8" fill="none" stroke-linecap="round" opacity="0.35" filter="url(#blurFilter)" />
+                </svg>
+
+                <div id="carFixed" aria-hidden="true">
+                    <img id="carImg" src="assets/images/Car.jpeg" alt="F1 car" />
+                </div>
+            </div>
+
+            <section id="home" class="section hero">
+                <div class="hero-grid">
+                    <div class="hero-left">
+                        <h1 class="hero-title">Formula Hacks <span class="accent">2025</span></h1>
+                        <p class="hero-sub">A motorsport-inspired 30-hour hackathon hosted by Google Developers Group
+                            (GDG) on Campus, Chitkara University. Speed, precision and innovation — race to build
+                            solutions that create real impact.</p>
+                        <div class="hero-cta">
+                            <a class="cta-btn" href="#register">Register Now</a>
+                            <a class="ghost-link" href="#about">Learn more</a>
+                        </div>
+
+                        <div class="hero-logos">
+                            <img src="assets/images/Group 1261154238.png" alt="GDG" class="partner" />
+                            <img src="assets/images/Group 533.png" alt="IIC" class="partner" />
+                        </div>
+                    </div>
+
+                    <div class="hero-right">
+                        <div class="hero-bg"></div>
+                        <div class="hero-overlay"></div>
+                        <div class="hero-particles" aria-hidden="true"></div>
+                        
+                        <svg class="hero-track-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <filter id="heroTrackGlow">
+                                    <feGaussianBlur stdDeviation="3" />
+                                </filter>
+                            </defs>
+                            
+                            <path id="heroTrackPath" 
+                                d="M 150 30 
+                                   C 230 30, 270 70, 270 150 
+                                   C 270 230, 230 270, 150 270 
+                                   C 70 270, 30 230, 30 150 
+                                   C 30 70, 70 30, 150 30 
+                                   Z" 
+                                stroke="rgba(217, 4, 41, 0.15)" 
+                                stroke-width="3" 
+                                fill="none" 
+                                stroke-linecap="round" 
+                                filter="url(#heroTrackGlow)" />
+                            
+                            <path d="M 150 30 
+                                     C 230 30, 270 70, 270 150 
+                                     C 270 230, 230 270, 150 270 
+                                     C 70 270, 30 230, 30 150 
+                                     C 30 70, 70 30, 150 30 
+                                     Z" 
+                                stroke="rgba(217, 4, 41, 0.3)" 
+                                stroke-width="2" 
+                                fill="none" 
+                                stroke-linecap="round" />
+                            
+                            <circle id="heroTrackDot" 
+                                cx="150" 
+                                cy="30" 
+                                r="4" 
+                                fill="#d90429">
+                                <animate attributeName="r" 
+                                    values="4;6;4" 
+                                    dur="1.5s" 
+                                    repeatCount="indefinite" />
+                            </circle>
+                            
+                            <circle id="heroTrackDot" 
+                                cx="150" 
+                                cy="30" 
+                                r="8" 
+                                fill="rgba(217, 4, 41, 0.2)" 
+                                filter="url(#heroTrackGlow)" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="scroll-indicator-wrap">
+                    <div id="scrollIndicator" class="scroll-indicator"></div>
+                </div>
+            </section>
+
+            <section id="about" class="section content-section">
+                <h2>About</h2>
+                <p>Formula Hacks 2025 is a hackathon inspired by Formula 1, bringing together the brightest minds to
+                    innovate at the intersection of AI, Data Science, and Web3. Experience 30 hours of intense coding,
+                    collaboration, and creativity as you race to build groundbreaking solutions.</p>
+            </section>
+
+            <section id="tracks" class="section content-section">
+                <h2>Tracks</h2>
+                <div class="tracks-grid">
+                    <div class="track-card">
+                        <h3>F1 Open Theme (AI)</h3>
+                        <p>AI-driven simulators, analytics & dashboards for motorsport innovation.</p>
+                    </div>
+                    <div class="track-card">
+                        <h3>Decentralized F1 (Web3)</h3>
+                        <p>NFTs, tokenized fan platforms, immutable race records on blockchain.</p>
+                    </div>
+                    <div class="track-card">
+                        <h3>F1 Gaming & Experience</h3>
+                        <p>Games, XR experiences & gamified fan engagement platforms.</p>
+                    </div>
+                    <div class="track-card">
+                        <h3>Industry Challenge</h3>
+                        <p>Sponsor-defined real-world problem statements to solve.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="timeline" class="section timeline-section">
+                <h2>Timeline (30 Hours)</h2>
+                <div class="vertical-timeline">
+                    <div class="tl-item">
+                        <div class="tl-time">9:00 AM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Check-in Starts</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">10:00 AM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Opening Ceremony</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">10:30 AM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Workshop Session</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">12:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Lunch</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">1:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Hackathon Begins</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">4:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Checkpoint 1</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">5:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Snacks Break</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">6:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Hackathon Continues</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">8:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Dinner</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">9:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Icebreaking Session</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">10:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Checkpoint 2</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">11:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">ChitChat + Open Mic</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">12:00 AM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Hackathon Continues</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">7:30 AM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Breakfast</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">8:30 AM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Checkpoint 3 / Submissions Start</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">11:00 AM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Submission Closes / Checkpoint 4</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">12:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Break</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">1:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Leaderboard / Presentations</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">2:00 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">AI Labs Orientation</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">2:30 PM</div>
+                        <div class="tl-dot timeline-checkpoint" tabindex="0"></div>
+                        <div class="tl-content">Results + Prize Distribution</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mentors" class="section content-section">
+                <h2>Mentors</h2>
+                <div class="mentors-grid">
+                    <div class="mentor">Udayan Sharma</div>
+                    <div class="mentor">Aditya Soni</div>
+                    <div class="mentor">Kashish</div>
+                    <div class="mentor">Hardik Thapar</div>
+                    <div class="mentor">Kavin Thakur</div>
+                </div>
+            </section>
+
+            <section id="sponsors" class="section content-section">
+                <h2>Sponsors & Partnerships</h2>
+                <p>Join us as a sponsor to support the next generation of innovators. Contact us for partnership opportunities including in-kind support, F&B partnerships, and more.</p>
+            </section>
+
+            <footer class="footer">© Formula Hacks 2025 — GDG on Campus, Chitkara University</footer>
+
+        </main>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
