@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>F1 Hackathon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF1801", // Ferrari Red
+                        "background-dark": "#121212", // Deep Black
+                        "card-dark": "#1A1A1A", // Slightly lighter black for cards
+                        "text-dark": "#E0E0E0", // Light grey for text
+                        "secondary-dark": "#282828", // Dark grey for borders/accents
+                        accent: "#FF1801", // Vibrant Red for accents
+                        "text-accent": "#FF1801", // Used for text elements that need the primary color
+                        "dark-gradient-start": "#0A0A0A",
+                        "dark-gradient-end": "#1A1A1A",
+                    },
+                    fontFamily: {
+                        display: ["Orbitron", "sans-serif"],
+                        body: ["Roboto", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        lg: "16px",
+                        xl: "20px"
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        .chequered-flag-bg {
+            background-image:
+                linear-gradient(45deg, #FF1801 25%, transparent 25%),
+                linear-gradient(-45deg, #FF1801 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #FF1801 75%),
+                linear-gradient(-45deg, transparent 75%, #FF1801 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+            background-color: #1A1A1A;}
+        .tire-track-bg {
+            background-image: url('image-f1-tire-mark.svg');
+            background-repeat: repeat-y;
+            background-position: center;
+            background-size: contain;
+            filter: invert(1) grayscale(1) brightness(0.5);}
+        .parallax-bg {
+            background-image: url('image-f1-track-bg.svg');
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            z-index: 0;
+            opacity: 0.05;filter: grayscale(1) invert(1);}
+        @keyframes carMoveLeft {
+            0% { transform: translateX(0) rotate(-12deg); }
+            50% { transform: translateX(-10px) rotate(-12deg); }
+            100% { transform: translateX(0) rotate(-12deg); }
+        }
+        @keyframes helmetMoveRight {
+            0% { transform: translateX(0) rotate(12deg); }
+            50% { transform: translateX(10px) rotate(12deg); }
+            100% { transform: translateX(0) rotate(12deg); }
+        }
+        .animate-car-left {
+            animation: carMoveLeft 4s ease-in-out infinite;
+        }
+        .animate-helmet-right {
+            animation: helmetMoveRight 4s ease-in-out infinite;
+        }
+        @keyframes tireTrackScroll {
+            0% { background-position-y: 0; }
+            100% { background-position-y: 100%; }
+        }
+        .animate-tire-track {
+            animation: tireTrackScroll 60s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-body text-text-dark">
+<div class="min-h-screen flex flex-col">
+<header class="w-full bg-card-dark shadow-lg fixed top-0 left-0 z-50 border-b border-secondary-dark">
+<div class="container mx-auto px-6 py-3 flex justify-between items-center">
+<div class="flex items-center">
+<img alt="F1 Hackathon Logo" class="h-12 w-auto mr-3 filter brightness-150" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeCAj0zwjlm7bIBw4piss-wacsc9LAwXuHVr59q1K-QZ2fECB0zo3TfhgZckZlTUitH1lGJAENSzYvxxWkK-OHK3j3w867tlqbOdv3zkv08LAeZTUfwA83Or4eW1PQgvRRzyGL-KJEFdQXn2K8D2vKjCsrVA16GypadabM0uWp3CQ2KigFlOPNjoprJIHfXA_UYfP28uj6Eu5TA4FAY5ZbO_nSVwzp6HSp5oVYNAoOo551D82SsMe5hiKdDv9THHlYFzydgCzhmvQ_"/>
+<span class="font-display font-bold text-2xl text-primary tracking-wider">F1 HACK</span>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="font-semibold text-text-dark hover:text-primary transition-colors" href="#about">About</a>
+<a class="font-semibold text-text-dark hover:text-primary transition-colors" href="#schedule">Schedule</a>
+<a class="font-semibold text-text-dark hover:text-primary transition-colors" href="#register">Register</a>
+<a class="font-semibold text-text-dark hover:text-primary transition-colors" href="#sponsors">Sponsors</a>
+</nav>
+<a class="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-colors flex items-center" href="#register">
+<span class="material-icons mr-2">flag</span>
+                Register Now
+            </a>
+</div>
+</header>
+<main class="flex-grow pt-28 md:pt-36 relative overflow-hidden bg-gradient-to-b from-dark-gradient-start to-dark-gradient-end">
+<div class="absolute inset-0 parallax-bg"></div>
+<div class="container mx-auto px-6 flex flex-col items-center justify-center text-center relative z-10">
+<h1 class="font-display text-6xl sm:text-7xl md:text-8xl font-black text-text-dark tracking-widest drop-shadow-lg">
+<span class="text-primary">START</span> YOUR ENGINES
+            </h1>
+<p class="font-display mt-4 text-xl sm:text-2xl text-text-dark/90 max-w-3xl">
+                The ultimate Formula 1 themed hackathon. Build, innovate, and race to the finish line with cutting-edge tech.
+            </p>
+<p class="mt-4 font-bold text-2xl text-text-dark"><span class="material-icons text-primary align-middle">calendar_today</span> 06-07th September 2025</p>
+<div class="mt-10 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+<a class="bg-primary text-white font-bold py-4 px-10 rounded-lg text-lg flex items-center space-x-3 hover:bg-red-700 transition-colors shadow-lg" href="#register">
+<span class="material-icons">groups</span>
+<span>Register Your Team</span>
+</a>
+<a class="bg-card-dark text-text-dark border-2 border-primary font-bold py-4 px-10 rounded-lg text-lg flex items-center space-x-3 hover:bg-secondary-dark transition-colors shadow-lg" href="https://devfolio.co" target="_blank">
+<img alt="Devfolio icon" class="h-6 w-6 filter invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxtHw0CyB2BIz0_kGsNvTLPas9XWjf6_rhVLgiWbiYrBPCdPMG2SXMJwsyUGxXdtvbiwX-Hdq9gWqInji-pBqGZBpuhzb5N-OGPvuYMymPmHAgJ0HsWSxgpeR9TYMD_m0wPZW9M78grIULHj8I9ux2uy-JUL8z6gS_vyTC1iFpvXGDaDsruzdnz2tik8xic4cJ_mrchIqeLdxF3AfgeM0Ao_Fv5KCM8KRi8TH6X8hhA8L_ApSt4-J51Ev7iZurrdgJAib2atp25gdw"/>
+<span>Apply with Devfolio</span>
+</a>
+</div>
+</div>
+<div class="hidden lg:block absolute -bottom-20 -left-20 z-0 opacity-80">
+<img alt="Cartoon F1 car" class="h-72 w-auto transform -rotate-12 animate-car-left filter brightness-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAoaS5HXJU7-2SHmQkqAihNxhe2DuceeV1PklHoQXH-VsFAiNWvTiZejOXdraYuEcJheZ1c0kmhvIeKJSJ8JsNMH10J0xJtuC6BR1bc8eVCf8b_N6p78xZ2GRrsfKTwssYKTM8_zdTRlYCw_qXLZyax0C9ZR5jiicyammIcB0IPQnVkFxjgasGZQ9Cs0zTThi7xZNew65PxhicJinUNxdSsrNdNOPMsWSgXosewMe0jNvYOcU6oGWMIzOKUddkT9gnGbT0EHCDtbfD"/>
+</div>
+<div class="hidden lg:block absolute -bottom-24 -right-20 z-0 opacity-80">
+<img alt="Cartoon F1 helmet" class="h-80 w-auto transform rotate-12 animate-helmet-right filter brightness-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy7Lnww912z4_32uoqEb5bJvSbK1xp_JYqxu1NBmPgxFR3da5uvoQHhEs2bwoZhaqecrcTBoyErVdRvPckx2JcN9_Zr16ERcIRfOCr1br7bsjqXtCVvAwLaXuBvu8zjc4OFzFG7d7ZsmTIIXKEGFQvcsqCss6SN95ilBE21N9GM6d1lqNd6TJkxVCfz8bvkMQ4R_yBgNqasQA4sLZ1MNWa9gJDCYPUZBtYx0SVBA2ebsCqIoQ7KNEYaMhg9Pw99aU-fDwWyPgrFqJn"/>
+</div>
+</main>
+<section class="py-24 bg-card-dark relative border-t border-b border-secondary-dark" id="about">
+<div class="absolute top-0 left-0 w-full h-20 chequered-flag-bg transform -skew-y-2 origin-top-left opacity-70"></div>
+<div class="absolute bottom-0 right-0 w-full h-20 chequered-flag-bg transform skew-y-2 origin-bottom-right opacity-70"></div>
+<div class="container mx-auto px-6 relative z-10">
+<div class="text-center mb-16">
+<h2 class="font-display text-5xl font-bold text-text-dark">About the <span class="text-primary">Race</span></h2>
+<p class="mt-4 text-lg text-text-dark/80 max-w-2xl mx-auto">Join us for a 2-day high-octane coding marathon, where you'll tackle challenges inspired by the world of Formula 1.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8 text-center">
+<div class="p-8 bg-background-dark rounded-xl border-2 border-primary/40 shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+<span class="material-icons text-primary text-6xl">speed</span>
+<h3 class="font-display text-2xl font-bold mt-4 text-text-dark">Innovate at Speed</h3>
+<p class="mt-2 text-text-dark/80">Develop groundbreaking solutions for race strategy, car performance, and fan engagement.</p>
+</div>
+<div class="p-8 bg-background-dark rounded-xl border-2 border-primary/40 shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+<span class="material-icons text-primary text-6xl">groups</span>
+<h3 class="font-display text-2xl font-bold mt-4 text-text-dark">Collaborate &amp; Compete</h3>
+<p class="mt-2 text-text-dark/80">Work with your team, network with mentors, and compete for amazing prizes and glory.</p>
+</div>
+<div class="p-8 bg-background-dark rounded-xl border-2 border-primary/40 shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+<span class="material-icons text-primary text-6xl">emoji_events</span>
+<h3 class="font-display text-2xl font-bold mt-4 text-text-dark">Win Big</h3>
+<p class="mt-2 text-text-dark/80">Showcase your project to a panel of expert judges from the tech and motorsport industries.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-dark relative" id="schedule">
+<div class="absolute left-0 top-0 h-full w-1/5 tire-track-bg opacity-10 hidden md:block animate-tire-track"></div>
+<div class="absolute right-0 top-0 h-full w-1/5 tire-track-bg opacity-10 hidden md:block animate-tire-track" style="transform: scaleX(-1);"></div>
+<div class="container mx-auto px-6 relative z-10">
+<div class="text-center mb-16">
+<h2 class="font-display text-5xl font-bold text-text-dark">Race <span class="text-primary">Weekend</span> Schedule</h2>
+<p class="mt-4 text-lg text-text-dark/80">Don't miss a moment of the action. Here's the full timetable.</p>
+</div>
+<div class="max-w-4xl mx-auto">
+<div class="grid md:grid-cols-2 gap-x-12">
+<div>
+<h3 class="font-display text-3xl font-bold text-primary border-b-4 border-primary pb-2 mb-8">Day 1: Saturday, 06 Sep</h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="bg-primary text-white font-bold rounded-lg px-4 py-2 text-center mr-4">
+<div class="text-sm">09:00</div>
+<div class="text-xs">AM</div>
+</div>
+<div>
+<h4 class="font-bold text-lg text-text-dark">Check-in &amp; Breakfast</h4>
+<p class="text-text-dark/70">Doors open. Fuel up for the day!</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-secondary-dark text-white font-bold rounded-lg px-4 py-2 text-center mr-4">
+<div class="text-sm">10:00</div>
+<div class="text-xs">AM</div>
+</div>
+<div>
+<h4 class="font-bold text-lg text-text-dark">Opening Ceremony</h4>
+<p class="text-text-dark/70">Welcome address and theme reveal.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-secondary-dark text-white font-bold rounded-lg px-4 py-2 text-center mr-4">
+<div class="text-sm">11:00</div>
+<div class="text-xs">AM</div>
+</div>
+<div>
+<h4 class="font-bold text-lg text-text-dark">Hacking Begins!</h4>
+<p class="text-text-dark/70">Lights out and away we go!</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-secondary-dark text-white font-bold rounded-lg px-4 py-2 text-center mr-4">
+<div class="text-sm">01:00</div>
+<div class="text-xs">PM</div>
+</div>
+<div>
+<h4 class="font-bold text-lg text-text-dark">Lunch / Pit Stop</h4>
+<p class="text-text-dark/70">Refuel your body and mind.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 md:mt-0">
+<h3 class="font-display text-3xl font-bold text-primary border-b-4 border-primary pb-2 mb-8">Day 2: Sunday, 07 Sep</h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="bg-secondary-dark text-white font-bold rounded-lg px-4 py-2 text-center mr-4">
+<div class="text-sm">11:00</div>
+<div class="text-xs">AM</div>
+</div>
+<div>
+<h4 class="font-bold text-lg text-text-dark">Hacking Ends / Code Freeze</h4>
+<p class="text-text-dark/70">Final lap! Submit your projects.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-secondary-dark text-white font-bold rounded-lg px-4 py-2 text-center mr-4">
+<div class="text-sm">12:00</div>
+<div class="text-xs">PM</div>
+</div>
+<div>
+<h4 class="font-bold text-lg text-text-dark">Project Expo &amp; Judging</h4>
+<p class="text-text-dark/70">Showcase your work to the judges.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-secondary-dark text-white font-bold rounded-lg px-4 py-2 text-center mr-4">
+<div class="text-sm">03:00</div>
+<div class="text-xs">PM</div>
+</div>
+<div>
+<h4 class="font-bold text-lg text-text-dark">Finalist Pitches</h4>
+<p class="text-text-dark/70">Top teams present on the main stage.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-primary text-white font-bold rounded-lg px-4 py-2 text-center mr-4">
+<div class="text-sm">04:00</div>
+<div class="text-xs">PM</div>
+</div>
+<div>
+<h4 class="font-bold text-lg text-text-dark">Awards &amp; Closing Ceremony</h4>
+<p class="text-text-dark/70">Podium finishers are announced!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-card-dark text-text-dark border-t border-secondary-dark" id="sponsors">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="font-display text-5xl font-bold text-text-dark">Official <span class="text-primary">Partners</span></h2>
+<p class="mt-4 text-lg text-text-dark/80 max-w-2xl mx-auto">Powering innovation at the F1 Hackathon. We're proud to be supported by industry leaders.</p>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-x-16 gap-y-10">
+<img alt="Sponsor Logo 1" class="h-12 object-contain grayscale hover:grayscale-0 transition-all duration-300 filter invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4LfedUDsWEhOHPH3HFVpkKIHo9Z18Cin2bqK0W0F9PFq-5TAVFSkShj6wHFYlZvOFxMYGZ-NVebMZDUrcONCw4jkKb3QMLhzsGgG3V8SneJafwVc6rFGQFs0U81tfsHckq99_-VKR1q3YtHQ7W-sYLqk1Tz0GNqcLlRTD8nCIHg_BudHVGnFcMeOs5ukjXt_bl5PoH9DFmRgd-i08f4jPmRvVmSdqZMs_cleFI52I8vyB5X6wKloHHB9ecz7rkiEcjE1EPTTPddu9"/>
+<img alt="Sponsor Logo 2" class="h-12 object-contain grayscale hover:grayscale-0 transition-all duration-300 filter invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBijkePy1ptMO52JDQ8PB2b4p07aZoRNHVvoWPFfm9HP5-o9kpzf4-klt4HVdL3RlP4Tn6zVFxSUmB1Y-vNKS43kckch1UMChOFehGxSRdxhJVz6YcjCd1cgGTd-idIGopmZNV6bOvxaN-d01KOQlt5JJwwtveKWM6xPg642NU3j_9DkUfpa7HgaMPKI1-_HplmKwyAtwOHxMh_X60o0cwRs1ccJl-ZaaeD--CfE3wNEU-dkfpz8xPv7utl6z2U4yVB1wJ1tRVS7wKS"/>
+<img alt="Sponsor Logo 3" class="h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300 filter invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXUTCL4BCGQ2IvgI5QCFli1PyTRDf_eOGyhIwzFrOjmH0px-zV8P95CjJUPunrSuryYpmck1gQLDfoRYC0XGRxcVKekeP-1M8qcBFCy23sEDpOzcWnvKvHZbqGUrsKBL-I4OGrKoTv_EOnVets-u7otn-WJtu_X6pSuu22nV4AsWjUDS9xkKBF7GKBTHe1kDGA75bJcXYu_tECbBPzBhCsG6pjluvhdDq91yIhZCoMM0GsfvYRiedk5woKu3B5rGaTQPIOLlbyTEiB"/>
+<img alt="Sponsor Logo 4" class="h-14 object-contain grayscale hover:grayscale-0 transition-all duration-300 filter invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJORwQe2m1iOJ2_kfQpoq3PRxBgOSNheCtdUouqEKW6pePYgJT2BfFw6taCYELAV4hY42bXWfmEshMq3nkaXru9qXzDdu-tW4BO60XgZBkJZebr6PCxYQWpiq0V5vjIyGAMpExLL1V14MXP55RVwxPI2b4YFo1zbSO074pXNtbrM1Lc_D2L4dVvjIuF0_DTZi_yFZSy7iiG-Hzyn4iHAJf9zlJyuis-THpGHQ2cZthMEnFTnBgWr_dHEn3FRmMGySNhyDQ_Q0oQ4ml"/>
+<img alt="Sponsor Logo 5" class="h-12 object-contain grayscale hover:grayscale-0 transition-all duration-300 filter invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm6g7ySnwal6c2z6qgJUry_fHFaUN9Yl8Ku_7zNA-SLAyfOHcpQKlSFrIhdw4ZgGl60z5UhEdMCl_b4fC16aEyforZiX2o2mNE73RJqKu-5wClrVnsAYSDc5jpfKuGYPYZ9DXx3WspoYHcGkCMZv1QrV-jhf1nUHORBqMQM0g06ww-N8geWyZa4_PlatwyaHke3sVHOyrl5LjQHZMKQ52NqUBRQoBXNpmKeLsCQHhIJg7gUi8G73XEgFtJ4vwDN71fGzKnV52xaS5G"/>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-dark" id="register">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="font-display text-5xl font-bold text-text-dark">Join the <span class="text-primary">Grid</span></h2>
+<p class="mt-4 text-lg text-text-dark/80 max-w-2xl mx-auto">Assemble your crew and secure your spot. Teams can have up to 4 members.</p>
+</div>
+<div class="max-w-2xl mx-auto bg-card-dark p-8 md:p-12 rounded-xl shadow-2xl border border-secondary-dark">
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label class="block text-sm font-bold text-text-dark mb-2" for="team-name">Team Name</label>
+<input class="w-full px-4 py-3 rounded-lg border border-secondary-dark focus:ring-primary focus:border-primary transition bg-background-dark text-text-dark placeholder-text-dark/60" id="team-name" placeholder="e.g., Red-Bullish Coders" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-bold text-text-dark mb-2" for="team-size">Team Size</label>
+<select class="w-full px-4 py-3 rounded-lg border border-secondary-dark focus:ring-primary focus:border-primary transition bg-background-dark text-text-dark" id="team-size">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+</select>
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-sm font-bold text-text-dark mb-2" for="email">Team Captain's Email</label>
+<input class="w-full px-4 py-3 rounded-lg border border-secondary-dark focus:ring-primary focus:border-primary transition bg-background-dark text-text-dark placeholder-text-dark/60" id="email" placeholder="you@example.com" type="email"/>
+</div>
+<div class="mb-8">
+<label class="block text-sm font-bold text-text-dark mb-2" for="members">Team Member Emails (comma separated)</label>
+<textarea class="w-full px-4 py-3 rounded-lg border border-secondary-dark focus:ring-primary focus:border-primary transition bg-background-dark text-text-dark placeholder-text-dark/60" id="members" placeholder="member1@example.com, member2@example.com" rows="3"></textarea>
+</div>
+<button class="w-full bg-primary text-white font-bold py-4 px-6 rounded-lg text-lg hover:bg-red-700 transition-colors flex items-center justify-center shadow-lg" type="submit">
+<span class="material-icons mr-2">send</span>
+                        Submit Registration
+                    </button>
+</form>
+</div>
+</div>
+</section>
+<footer class="bg-card-dark text-text-dark border-t border-secondary-dark" id="contact">
+<div class="container mx-auto px-6 py-12">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<div class="flex items-center">
+<img alt="F1 Hackathon Logo" class="h-10 w-auto mr-3 filter brightness-150" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeCAj0zwjlm7bIBw4piss-wacsc9LAwXuHVr59q1K-QZ2fECB0zo3TfhgZckZlTUitH1lGJAENSzYvxxWkK-OHK3j3w867tlqbOdv3zkv08LAeZTUfwA83Or4eW1PQgvRRzyGL-KJEFdQXn2K8D2vKjCsrVA16GypadabM0uWp3CQ2KigFlOPNjoprJIHfXA_UYfP28uj6Eu5TA4FAY5ZbO_nSVwzp6HSp5oVYNAoOo551D82SsMe5hiKdDv9THHlYFzydgCzhmvQ_"/>
+<span class="font-display font-bold text-xl text-primary">F1 HACK</span>
+</div>
+<p class="mt-4 text-text-dark/70">The pinnacle of motorsport and technology.</p>
+</div>
+<div>
+<h4 class="font-display font-bold text-lg text-primary">Quick Links</h4>
+<ul class="mt-4 space-y-2">
+<li><a class="hover:text-primary transition-colors" href="#about">About</a></li>
+<li><a class="hover:text-primary transition-colors" href="#schedule">Schedule</a></li>
+<li><a class="hover:text-primary transition-colors" href="#register">Register</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-display font-bold text-lg text-primary">Contact Us</h4>
+<p class="mt-4 text-text-dark/70">Have questions? Reach out!</p>
+<a class="mt-2 inline-block hover:text-primary transition-colors" href="mailto:contact@f1hack.com">contact@f1hack.com</a>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-secondary-dark text-center text-text-dark/50">
+<p>© 2025 F1 Hackathon. All Rights Reserved. Not an official F1™ event.</p>
+</div>
+</div>
+</footer>
+</div>
+
+</body></html>
