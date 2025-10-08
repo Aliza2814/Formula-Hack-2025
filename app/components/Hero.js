@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Hero() {
   return (
-    <main className="flex-grow pt-28 md:pt-36 relative overflow-hidden bg-gradient-to-b from-dark-gradient-start to-dark-gradient-end">
+    <main className="flex-grow pt-28 md:pt-36 relative overflow-hidden bg-gradient-to-b from-dark-gradient-start to-dark-gradient-end min-h-screen">
       <div className="absolute inset-0 parallax-bg"></div>
       <div className="container mx-auto px-6 flex flex-col items-center justify-center text-center relative z-10">
         <h1 className="font-display text-6xl sm:text-7xl md:text-8xl font-black text-text-dark tracking-widest drop-shadow-lg">
@@ -13,7 +13,7 @@ export default function Hero() {
           cutting-edge tech.
         </p>
         <p className="mt-4 font-bold text-2xl text-text-dark">
-          <span className="material-icons text-primary align-middle">calendar_today</span> 06-07th September 2025
+          <span className="material-icons text-primary align-middle">calendar_today</span> 30-31st October 2025
         </p>
         <div className="mt-10 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
           <a className="bg-primary text-white font-bold py-4 px-10 rounded-lg text-lg flex items-center space-x-3 hover:bg-red-700 transition-colors shadow-lg"
